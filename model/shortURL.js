@@ -1,15 +1,15 @@
-const mongoose = require('mongoose');
+const mongoose = require('mongoose')
 
 const shortURLSchema = new mongoose.Schema({
-  original: {
+  longURL: {
     type: String,
-    require: true,
+    require: true
   },
   short: {
     type: String,
     require: true,
-    default: Math.random().toString(36).substr(2, 5),
-  },
-});
+    default: Math.random().toString(36).substr(2, 5)
+  }
+})
 
-module.exports = mongoose.model('shortURL', shortURLSchema);
+module.exports = mongoose.model('shortURL', shortURLSchema)
