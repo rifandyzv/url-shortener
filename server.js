@@ -5,7 +5,7 @@ const bodyParser = require('body-parser')
 const { urlencoded } = require('body-parser')
 const app = express()
 
-app.use(bodyParser.json)
+app.use(bodyParser.json())
 
 app.use(
   bodyParser.urlencoded({
@@ -18,11 +18,13 @@ mongoose.connect('mongodb://localhost:27017/url', {
   useFindAndModify: true
 })
 
-app.listen(5000)
-console.log('server live on port 5000')
+app.listen(3000)
+console.log('server live on port 3000')
 
 app.get('/', (req, res) => {
-  res.send('asdw')
+  // res.sendFile('/view/index.html')
+  console.log('test')
+  res.send('asd')
 })
 
 app.post('/shortURL', async (req, res) => {
