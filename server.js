@@ -22,34 +22,33 @@ app.listen(3000)
 console.log('server live on port 3000')
 
 app.get('/', (req, res) => {
-  // res.sendFile('/view/index.html')
-  console.log('test')
-  res.send('asd')
+  res.sendFile('view/index.html', { root: __dirname })
 })
 
 app.post('/shortURL', async (req, res) => {
   try {
     const newShort = new ShortURL({
-      longURL: req.body.longURL
+      longURL: req.body.longURL,
+      short: Math.random().toString(36).substr(2, 5)
     })
-    console.log(req.body.longURL)
 
     const savedShort = await newShort.save()
-    res.status(201).json(savedShort)
+    console.log(savedShort)
+    res.redirect('/')
   } catch (err) {
     res.status(400).json({ message: err })
   }
 })
 
-app.get('/shortURL', async (req, res) => {
-  try {
-    const urlData = await ShortURL.find()
+// app.get('/shortURL', async (req, res) => {
+//   try {
+//     const urlData = await ShortURL.find()
 
-    res.json(urlData)
-  } catch {
-    res.status(404)
-  }
-})
+//     res.json(urlData)
+//   } catch {
+//     res.status(404)
+//   }
+// })
 
 app.get('/:shortID', async (req, res) => {
   try {

@@ -1,0 +1,12 @@
+body {
+  background-color: azure;
+}
+.main {
+  padding-top: 50px;
+  text-align: center;
+}
+
+.table {
+  margin-left: auto;
+  margin-right: auto;
+}
