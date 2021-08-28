@@ -25,8 +25,9 @@ app.get('/', (req, res) => {
   res.sendFile('view/index.html', { root: __dirname })
 })
 
-app.post('/shortURL', async (req, res) => {
+app.post('/shortURL', async (req, res, e) => {
   try {
+    e.preventDefault()
     const newShort = new ShortURL({
       longURL: req.body.longURL,
       short: Math.random().toString(36).substr(2, 5)
@@ -38,6 +39,7 @@ app.post('/shortURL', async (req, res) => {
   } catch (err) {
     res.status(400).json({ message: err })
   }
+  cam
 })
 
 // app.get('/shortURL', async (req, res) => {

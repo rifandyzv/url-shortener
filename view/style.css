@@ -6,7 +6,32 @@ body {
   text-align: center;
 }
 
-.table {
+.container {
+  display: none;
+  padding: auto;
+}
+#result {
+  color: rgb(0, 0, 0);
+}
+
+.button-primary {
+  display: flexbox;
+}
+
+#short-link-container {
+  display: flex;
+  justify-content: center;
+  align-items: baseline;
+}
+
+#short-link-container > p {
+  background-color: aquamarine;
+  padding: 5px;
+  border-radius: 3px;
+  margin: 10px;
+}
+/* .table {
   margin-left: auto;
   margin-right: auto;
 }
+ */
