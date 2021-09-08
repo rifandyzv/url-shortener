@@ -13,3 +13,7 @@ function showShortURL() {
     console.log(err)
   }
 }
+
+function getLink(link) {
+  document.getElementsById('short-link').innerHTML = link
+}

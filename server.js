@@ -3,6 +3,7 @@ const mongoose = require('mongoose')
 const ShortURL = require('./model/shortURL')
 const bodyParser = require('body-parser')
 const { urlencoded } = require('body-parser')
+const path = require('path')
 const app = express()
 
 app.use(bodyParser.json())
@@ -12,6 +13,9 @@ app.use(
     extended: true
   })
 )
+
+app.use(express.static(path.join(__dirname, 'view')))
+
 mongoose.connect('mongodb://localhost:27017/url', {
   useNewUrlParser: true,
   useUnifiedTopology: true,
@@ -27,19 +31,20 @@ app.get('/', (req, res) => {
 
 app.post('/shortURL', async (req, res, e) => {
   try {
-    e.preventDefault()
+    // e.preventDefault()
     const newShort = new ShortURL({
       longURL: req.body.longURL,
       short: Math.random().toString(36).substr(2, 5)
     })
 
+    // document.getElementsById('short-link').innerHTML = newShort.short
     const savedShort = await newShort.save()
     console.log(savedShort)
-    res.redirect('/')
+    res.end()
+    // res.redirect('/')
   } catch (err) {
     res.status(400).json({ message: err })
   }
-  cam
 })
 
 // app.get('/shortURL', async (req, res) => {
