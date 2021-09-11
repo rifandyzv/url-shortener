@@ -40,7 +40,7 @@ app.post('/shortURL', async (req, res, e) => {
     // document.getElementsById('short-link').innerHTML = newShort.short
     const savedShort = await newShort.save()
     console.log(savedShort)
-    res.end()
+    res.status(200).json(savedShort)
     // res.redirect('/')
   } catch (err) {
     res.status(400).json({ message: err })
